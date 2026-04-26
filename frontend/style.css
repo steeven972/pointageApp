@@ -14,7 +14,7 @@ header{
     text-align: center;
 }
 
-div #login-form{
+div #loginForm{
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -30,20 +30,36 @@ main{
     background-color: #f0f0f0;
 }
 input{
-    padding: 5px;
+    padding: 10px;
+    padding-right: 10px;
+    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
 }
-input[type="submit"]{
+
+#pointage-button{
     background-color: #333;
     color: #fff;
     border: none;
     cursor: pointer;
     margin-top: 20px;
+    width: 50%;
+    padding: 10px 0;
+    border-radius: 5px;
+    align-self: center;
 }
 form{
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+form label{
+    font-size: 1.2em;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #pointage-form{

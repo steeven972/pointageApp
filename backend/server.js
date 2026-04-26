@@ -12,9 +12,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.get('/', (req, res) => {
     res.redirect('/login.html');
 });
-app.get('/register', (req, res) => {
-    res.redirect('/register.html');
-});
+
 app.get('/pointage', (req, res) => {
     res.redirect('/pointage.html');
 });

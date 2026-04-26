@@ -15,7 +15,7 @@ connection.connect((err) => {
     console.log('Connected to the database.');
 });
 
-connection.query('CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL, last_pointage DATETIME)',
+connection.query('CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, status BOOLEAN DEFAULT false, role VARCHAR(255) NOT NULL, last_pointage DATETIME)',
     (err, results) => {
         if (err) {
             console.error('Error creating users table:', err);
@@ -24,7 +24,7 @@ connection.query('CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMAR
     console.log('Users table created or already exists.');
 });
 
-connection.query('CREATE TABLE IF NOT EXISTS pointages (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, status VARCHAR(255) NOT NULL, timestamp DATETIME NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+connection.query('CREATE TABLE IF NOT EXISTS pointages (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, timestamp_in DATETIME NOT NULL, timestamp_out DATETIME, total_minutes INT, FOREIGN KEY (user_id) REFERENCES users(id))',
     (err, results) => {
         if (err) {
             console.error('Error creating pointages table:', err);
@@ -54,9 +54,9 @@ function updateUserStatus(username, status, callback) {
     });
 }
 
-function addPointage(userId, status, callback) {
+function addPointage(userId, callback) {
     
-    connection.query('INSERT INTO pointages (user_id, status, timestamp) VALUES (?, ?, ?)', [userId, status, new Date()], (err, results) => {
+    connection.query('INSERT INTO pointages (user_id, timestamp_in, timestamp_out) VALUES (?, ?, ?)', [userId, new Date(), null], (err, results) => {
         if (err) {  
             console.error('Error adding pointage to database:', err);
             return callback(err);
@@ -65,8 +65,46 @@ function addPointage(userId, status, callback) {
     });
 }
 
-function addUser(username, hashedPassword, callback) {
-    connection.query('INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)', [username, hashedPassword, 'employé' ,'absent'], (err, results) => {
+function updatePointage(userId, callback) {
+    const timestampOut = new Date();
+
+    // 🔍 trouver le pointage ouvert
+    connection.query(
+        'SELECT * FROM pointages WHERE user_id = ? AND timestamp_out IS NULL LIMIT 1',
+        [userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error fetching pointage:', err);
+                return callback(err);
+            }
+
+            if (results.length === 0) {
+                return callback(new Error('Aucun pointage ouvert'));
+            }
+
+            const pointageId = results[0].id;
+            const timestampIn = results[0].timestamp_in;
+            const totalHours = (timestampOut - timestampIn) / (1000 * 60);
+            
+            // 🔥 fermer le bon pointage
+            connection.query(
+                'UPDATE pointages SET timestamp_out = ?, total_hours = ? WHERE id = ?',
+                [timestampOut, totalHours, pointageId],
+                (err, results) => {
+                    if (err) {
+                        console.error('Error updating pointage:', err);
+                        return callback(err);
+                    }
+
+                    callback(null, results);
+                }
+            );
+        }
+    );
+}
+
+function addUser(username, hashedPassword, role, callback) {
+    connection.query('INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)', [username, hashedPassword, role, false], (err, results) => {
         if (err) {  
             console.error('Error adding user to database:', err);
             return callback(err);
@@ -87,4 +125,4 @@ function getUserStatus(username, callback) {
 
 
 
-module.exports = {connection, getUserByUsername, updateUserStatus,getUserStatus, addUser, addPointage};
+module.exports = {connection, getUserByUsername, updateUserStatus,getUserStatus, addUser, addPointage, updatePointage};
