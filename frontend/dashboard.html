@@ -21,5 +21,40 @@
 </table>
 
 <script src="/backend/routes/admin.js"></script>
+<script>
+    async function fetchUsers(){
+        const token = localStorage.getItem('token');
+        const res = await fetch('/api/admin/users', {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const users = await res.json();
+        displayUsers(users);
+    }
+
+    function displayUsers(users) {
+        const tableBody = document.getElementById('usersTable');
+        tableBody.innerHTML = '';
+
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${user.status}</td>
+                <td>${user.last_pointage}</td>
+                <td>
+                    <button onclick="updateUserStatus(${user.id}, 'présent')">Présent</button>
+                    <button onclick="updateUserStatus(${user.id}, 'absent')">Absent</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+</script>
 </body>
 </html>

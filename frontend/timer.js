@@ -20,28 +20,6 @@ function dayOfWeek() {
 const dayElement = document.getElementById('days');
 dayElement.textContent = dayOfWeek();
 
-function updateStatus(status){
-    const now = new Date();
-    const hours = now.getHours();
-    const statusSpan = statusElement.querySelector('#status-span');
-    if(statusSpan){
-        if (hours >= OPEN_HOUR && hours < CLOSE_HOUR && statusElement.innerHTML != 'Présent') {
-            
-            statusSpan.textContent = 'Présent';
-            statusSpan.style.color = 'green';
-        } else {
-            statusSpan.textContent = 'Absent';
-            statusSpan.style.color = 'red';
-        }
-    
-    }else{
-        const span = document.createElement('span');
-        span.id = 'status-span';
-        statusElement.appendChild(span);
-        updateStatus();
-    }
-}
-
 const token = localStorage.getItem('token');
 
 if (!token) {
@@ -54,5 +32,58 @@ const payload = JSON.parse(atob(token.split('.')[1]));
 document.getElementById('username').textContent =
     "Bienvenue " + payload.username;
 
-setInterval(updateStatus, 10000);
-updateStatus(payload.status);
+    window.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+
+            const res = await fetch('/api/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const user = await res.json();
+
+            updateStatusUI(user.status);
+        });
+
+        setInterval(async () => {
+            const token = localStorage.getItem('token');
+
+            const res = await fetch('/api/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const user = await res.json();
+            updateStatusUI(user.status);
+        }, 10000); // Mettre à jour toutes les 10 secondes
+        
+        function updateStatusUI(status) {
+            const span = document.getElementById('status-span');
+            span.textContent = status;
+
+            span.style.color = status === 'présent' ? 'green' : 'red';
+        }
+        document.getElementById('pointage-button').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const token = localStorage.getItem('token');
+
+            const res = await fetch('/api/pointage/status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert(data.newStatus === 'présent' ? 'Pointage effectué: Présent' : 'Pointage effectué: Absent');
+                updateStatusUI(data.newStatus);
+            } else {
+                alert(data.message);
+            }
+        });
+       

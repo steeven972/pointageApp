@@ -24,6 +24,16 @@ connection.query('CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMAR
     console.log('Users table created or already exists.');
 });
 
+connection.query('CREATE TABLE IF NOT EXISTS pointages (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, status VARCHAR(255) NOT NULL, timestamp DATETIME NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+    (err, results) => {
+        if (err) {
+            console.error('Error creating pointages table:', err);
+            return;
+        }
+        console.log('Pointages table created or already exists.');
+    }
+);
+
 function getUserByUsername(username, callback) {
     connection.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {
         if (err) {
@@ -38,6 +48,17 @@ function updateUserStatus(username, status, callback) {
     connection.query('UPDATE users SET status = ? WHERE username = ?', [status, username], (err, results) => {
         if (err) {
             console.error('Error updating user status:', err);
+            return callback(err);
+        }
+        callback(null, results);
+    });
+}
+
+function addPointage(userId, status, callback) {
+    
+    connection.query('INSERT INTO pointages (user_id, status, timestamp) VALUES (?, ?, ?)', [userId, status, new Date()], (err, results) => {
+        if (err) {  
+            console.error('Error adding pointage to database:', err);
             return callback(err);
         }
         callback(null, results);
@@ -66,4 +87,4 @@ function getUserStatus(username, callback) {
 
 
 
-module.exports = {connection, getUserByUsername, updateUserStatus, addUser};
+module.exports = {connection, getUserByUsername, updateUserStatus,getUserStatus, addUser, addPointage};

@@ -116,6 +116,58 @@ router.get('/pointages/:id', verifyAdmin, (req, res) => {
     );
 });
 
+router.post('/pointage/status', (req, res) => {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+        return res.status(403).json({ message: 'Token manquant' });
+    }
+
+    const decoded = jwt.verify(
+        token.split(' ')[1],
+        process.env.JWT_SECRET || 'dev_secret'
+    );
+
+    db.getUserByUsername(decoded.username, (err, user) => {
+        if (err) return res.status(500).json({ message: 'Erreur DB' });
+
+        const newStatus = user.status === 'présent' ? 'absent' : 'présent';
+
+        db.updateUserStatus(user.username, newStatus, (err) => {
+            if (err) return res.status(500).json({ message: 'Erreur DB' });
+
+            // 🔥 ENREGISTRER LE POINTAGE AVANT DE RÉPONDRE
+            db.addPointage(user.id, newStatus, (err) => {
+                if (err) {
+                    return res.status(500).json({ message: 'Erreur pointage' });
+                }
+
+                res.json({ success: true, newStatus });
+            });
+        });
+    });
+});
+
+router.get('/me', (req, res) => {
+    const token = req.headers['authorization'];
+
+    if (!token) return res.status(403).json({ message: 'Token manquant' });
+
+    const decoded = jwt.verify(
+        token.split(' ')[1],
+        process.env.JWT_SECRET || 'dev_secret'
+    );
+
+    db.getUserByUsername(decoded.username, (err, user) => {
+        if (err) return res.status(500).json({ message: 'Erreur DB' });
+
+        res.json({
+            username: user.username,
+            status: user.status
+        });
+    });
+});
+
 function verifyAdmin(req, res, next) {
     const token = req.headers['authorization'];
 
