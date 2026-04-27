@@ -3,27 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/utils.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <h1>Biocoop register</h1>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        <h1>Biocoop users management</h1>
+        <div id="button-div">
+            <button id="btn-inverse" onclick="showRegisterForm()">Register User</button>
+            <button id="btn-inverse" onclick="showDeleteUserForm()">Delete User</button>
+            <button id="btn-inverse" onclick="window.location.href = '/admin.html'">Admin panel</button>
+        </div>
+        
     </header>
 
     <main>
-        <div id="register-form">
-            <form action="/api/admin/create-user" method="post">
+        <div id="register-form" style="display: none;">
+            <h2>Register User</h2>
+            <form id="registerForm">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
 
+                <label for="role">Role:</label>
+                <select id="role" name="role">
+                    <option value="employé">Employé</option>
+                    <option value="admin">Admin</option>
+                </select><br><br>
+
                 <input type="submit" value="Register">
+            </form>
+        </div>
+        <div id="delete-user-form">
+            <h2>Delete User</h2>
+            <form id="deleteForm">
+                <label for="userId">User ID:</label>
+                <input type="number" id="userId" name="userId" required><br><br>
+                <button type="submit">Delete User</button>
             </form>
         </div>
         
     </main>
+    <script src="js/userManager.js"></script>
 </body>
 </html>

@@ -17,13 +17,6 @@ app.get('/pointage', (req, res) => {
     res.redirect('/pointage.html');
 });
 
-app.get('/dashboard', (req, res) => {
-    res.redirect('/dashboard.html');
-});
-
-app.get('/admin', (req, res) => {
-    res.redirect('/dashboard.html');
-});
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', authRoutes);

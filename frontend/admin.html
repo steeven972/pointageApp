@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="styles/utils.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        <h1>Admin panel</h1>
+        <div id="button-div">
+            <a href="register.html">Create User</a>
+            <a href="dashboard.html">View Users</a>
+            <button id="btn-inverse" onclick="disconnection()">Déconnexion</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Liste des utilisateurs</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                    <th>Dernier pointage</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="usersTable"></tbody>
+        </table>
+    </div>
+</body>
+<script src="js/admin.js"></script>
+<script src="js/utils.js"></script>
+</html>

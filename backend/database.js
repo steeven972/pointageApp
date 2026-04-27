@@ -44,6 +44,42 @@ function getUserByUsername(username, callback) {
     });
 }
 
+function getUserById(id, callback){
+    connection.query(
+        'SELECT id, username, status, role FROM users WHERE id = ?',
+        [id],
+        (err, results)=>{
+            if(err) return callback(err);
+
+            callback(null, results[0]);
+        }
+    );
+}
+
+function getUserList(callback){
+    connection.query(`
+        SELECT id, username, status, role, last_pointage 
+        FROM users
+    `, (err, results) => {
+        if (err) {
+            return callback(err);
+        }
+
+        callback(null, results);
+    });
+} 
+
+function updatePassword(username, newPassword, callback) {
+    connection.query(
+        'UPDATE users SET password = ? WHERE username = ?',
+        [newPassword, username],
+        (err, results) => {
+            if (err) return callback(err);
+            callback(null, results);
+        }
+    );
+}
+
 function updateUserStatus(username, status, callback) {
     connection.query('UPDATE users SET status = ? WHERE username = ?', [status, username], (err, results) => {
         if (err) {
@@ -88,7 +124,7 @@ function updatePointage(userId, callback) {
             
             // 🔥 fermer le bon pointage
             connection.query(
-                'UPDATE pointages SET timestamp_out = ?, total_hours = ? WHERE id = ?',
+                'UPDATE pointages SET timestamp_out = ?, total_minutes = ? WHERE id = ?',
                 [timestampOut, totalHours, pointageId],
                 (err, results) => {
                     if (err) {
@@ -112,7 +148,27 @@ function addUser(username, hashedPassword, role, callback) {
         callback(null, results);
     });
 }
+function deleteUser(userId, callback) {
+    connection.query('DELETE FROM users WHERE id = ?', [userId], (err, results) => {
+        if (err) {
+            console.error('Error deleting user from database:', err);
+            return callback(err);
+        }
+        callback(null, results);
+    });
+}
 
+//FONCTION POUR RECUPERER LE POINTAGE OUVERT (SI EXISTE)
+function getOpenPointage(userId, callback) {
+    connection.query(
+        'SELECT * FROM pointages WHERE user_id = ? AND timestamp_out IS NULL LIMIT 1',
+        [userId],
+        (err, results) => {
+            if (err) return callback(err);
+            callback(null, results[0]);
+        }
+    );
+}
 function getUserStatus(username, callback) {
     connection.query('SELECT status FROM users WHERE username = ?', [username], (err, results) => {
         if (err) {  
@@ -125,4 +181,6 @@ function getUserStatus(username, callback) {
 
 
 
-module.exports = {connection, getUserByUsername, updateUserStatus,getUserStatus, addUser, addPointage, updatePointage};
+module.exports = {connection, getUserByUsername, updateUserStatus,getUserStatus,
+                addUser, addPointage, updatePointage, deleteUser, getOpenPointage,
+                getUserList, updatePassword, getUserById};

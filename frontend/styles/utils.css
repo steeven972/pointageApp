@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: #0c4da2;
+}
+body{
+    background-color: #f0f0f0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c4da2; /* bleu Biocoop */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+header #username{
+    color: #fff;
+    font-size: 1.2rem;
+}
+header img{
+    height: 40px;
+    margin-left: 20px;
+}
+
+#button-div{
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#btn, #pointage-button{
+    background-color:  #0c4da2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 50%;
+    padding: 10px 0;
+    border-radius: 5px;
+    align-self: center;
+}
+#btn:hover{
+    background-color: #083570;
+}
+
+#btn-inverse, a{
+    background-color: #fff;
+    color: #0c4da2;
+    border: 1px solid #0c4da2;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: center;
+}
+
+a, button{
+    font-size: 1rem;
+}

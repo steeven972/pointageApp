@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="passwordForm">
+        <label for="oldPassword">Ancien mot de passe:</label>
+        <input type="password" id="oldPassword" name="oldPassword" required><br><br>
+
+        <label for="newPassword">Nouveau mot de passe:</label>
+        <input type="password" id="newPassword" name="newPassword" required><br><br>
+
+        <button type="submit" onclick="updatePassword()">Changer le mot de passe</button>
+    </form>
+    <script src="js/utils.js"></script>
+</body>
+</html>

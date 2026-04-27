@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="styles/dashboard_style.css">
     <title>Admin Dashboard</title>
 </head>
 <body>
@@ -20,7 +21,8 @@
     <tbody id="usersTable"></tbody>
 </table>
 
-<script src="/backend/routes/admin.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/utils.js"></script>
 <script>
     async function fetchUsers(){
         const token = localStorage.getItem('token');

@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/*
+header {
+    background: #1e293b;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}*/
+
+a{
+    text-decoration: none;
+}
+
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+}
+
+h2{
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+thead {
+    background: #3b82f6;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th{
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tbody tr:hover {
+    background: #e5e7eb;
+}
+
+/* STATUS */
+.status-present {
+    color: green;
+    font-weight: bold;
+}
+
+.status-absent {
+    color: red;
+    font-weight: bold;
+}
+
+/* BUTTON */
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2563eb;
+}
+

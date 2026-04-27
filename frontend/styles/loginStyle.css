@@ -1,0 +1,45 @@
+div #loginForm{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+main{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+input{
+    padding: 10px;
+    padding-right: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form label{
+    font-size: 1.2em;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+a{
+    color: white;
+    background-color: #083570;
+    text-decoration: none;
+    font-weight: bold;
+}

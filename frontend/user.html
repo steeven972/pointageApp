@@ -3,39 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/pointingStyle.css">
     <link rel="stylesheet" href="styles/utils.css">
-    <title>Biocoop pointage</title>
+    <title>Document</title>
 </head>
 <body>
     <header>
         <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
         <div id="username"></div>
 
-        <div id="button-div">
+        <div>
             <a href="/updateMDP.html">Change password</a>
             <button id="btn-inverse" onclick="disconnection()">Déconnexion</button>
             <a id="reserve-button" href="/admin.html" style="display: none;">Admin Panel</a>
         </div>
-        
-    
-        
     </header>
 
     <main>
-            <div id="pointage-form">
-                <h1>Pointage</h1>
-                <form id="pointageForm">
-                    <div id="days"></div>
-                    <div id="timestamp"></div>
-                
+        <h1>Fiche utilisateur</h1>
 
-                    <div id="status">status: <span id="status-span"></span></div>
-                    <button type="submit" id="pointage-button">Pointer</button>
-                </form>
-            </div>
+        <div id="userCard"></div>
+
+        <script src="js/user.js"></script>
     </main>
-    <script src="js/timer.js"></script>
-    <script src="js/utils.js"></script>
 </body>
 </html>

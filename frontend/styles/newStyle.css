@@ -1,0 +1,268 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* 🌿 BODY */
+body{
+    background-color: #F4F1EA;
+    color: #2D2D2D;
+}
+
+/* 🌿 HEADER */
+header{
+    background-color: #3A7D44;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header button {
+    background-color: #A7C957;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #2D2D2D;
+}
+
+header button:hover {
+    background-color: #8fbf4a;
+}
+
+/* 🌿 MAIN */
+main{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🌿 CARDS (form / panel) */
+#loginForm,
+#pointage-form,
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* 🌿 FORM */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3A7D44;
+}
+
+form label{
+    font-size: 1.1em;
+}
+
+/* 🌿 INPUT */
+input{
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+input:focus{
+    border-color: #3A7D44;
+    outline: none;
+}
+
+/* 🌿 BUTTON */
+#pointage-button,
+button{
+    background-color: #3A7D44;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+#pointage-button:hover,
+button:hover{
+    background-color: #2e6136;
+}
+
+/* 🌿 TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #A7C957;
+    color: #2D2D2D;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 🌿 STATUS */
+.status-present {
+    color: #3A7D44;
+    font-weight: bold;
+}
+
+.status-absent {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* 🌿 TEXTE */
+#days, #timestamp{
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #3A7D44;
+}
+
+
+
+/*--------------------------------------------------------------*/
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🌿 BODY */
+body{
+    background-color: #F4F1EA; /* beige naturel */
+    font-family: Arial, sans-serif;
+}
+
+/* 🌿 HEADER */
+header{
+    background-color: #3A7D44; /* vert Biocoop */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 🌿 FORM LOGIN */
+div #loginForm{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* 🌿 MAIN */
+main{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4F1EA;
+}
+
+/* 🌿 INPUT */
+input{
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+input:focus{
+    border-color: #3A7D44;
+    outline: none;
+}
+
+/* 🌿 BUTTON */
+#pointage-button{
+    background-color: #3A7D44;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 50%;
+    padding: 10px 0;
+    border-radius: 6px;
+    align-self: center;
+    transition: 0.2s;
+}
+
+#pointage-button:hover{
+    background-color: #2e6136;
+}
+
+/* 🌿 FORM */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label{
+    font-size: 1.2em;
+}
+
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3A7D44;
+}
+
+/* 🌿 POINTAGE CARD */
+#pointage-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* 🌿 TEXTE */
+#days{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #3A7D44;
+}
+
+#timestamp{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #3A7D44;
+}

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/loginStyle.css">
+    <link rel="stylesheet" href="styles/utils.css">
+    <title>Biocoop LoginPage</title>
 </head>
 <body>
     <header>
-        <h1>Biocoop Login</h1>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo">
     </header>
 
     <main>
@@ -21,35 +22,11 @@
                 <label>Password:</label>
                 <input type="password" id="password" required>
 
-                <button type="submit" id="pointage-button">Login</button>
+                <button type="submit" id="btn">Login</button>
             </form>
         </div>
     </main>
 
-<script>
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-        localStorage.setItem('token', data.token);
-        window.location.href = "/pointage.html";
-    } else {
-        alert(data.message);
-    }
-});
-</script>
 </body>
+<script src="js/login.js"></script>
 </html>
