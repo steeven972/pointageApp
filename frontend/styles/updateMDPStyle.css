@@ -1,0 +1,49 @@
+div #passwordForm{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    
+}
+
+main{
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    gap: 30px;
+}
+
+main hr{
+    width: 65px;
+    height: 6px;
+    background-color: #0c4da2;
+    border-radius: 100px;
+}
+input{
+    width: 100%;
+    padding: 10px;
+    padding-right: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form label{
+    font-size: 1.2em;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
+}

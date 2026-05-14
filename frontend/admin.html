@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="styles/components/sideBarStyle.css">
+    <link rel="stylesheet" href="styles/components/headerStyle.css">
+    <link rel="stylesheet" href="styles/utils.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--<header>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        <h1>Admin panel</h1>
+        <div id="button-div">
+            <a href="register.html">User Manager</a>
+            <a href="pointage.html">Pointage</a>
+            <button id="btn-inverse" onclick="disconnection()">Déconnexion</button>
+        </div>
+    </header>--->
+    <div id="main-container">
+    <aside>
+        <header>
+            <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        </header>
+        <div id="sideBar-div">
+            <button id="reserve-button" class="sideBar-btn" onclick="goToAdminPanel()" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                </svg>
+                Dashboard
+            </button>
+                <button class="sideBar-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                        <path d="M12 7v5l3 3" />
+                    </svg>
+                    Pointage
+                </button>
+                <button class="sideBar-btn" onclick="goToRapportPage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chart-bar">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6" />
+                        <path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10" />
+                        <path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14" />
+                        <path d="M4 20h14" />
+                    </svg>
+                    Rapport
+                </button>
+                <button class="sideBar-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-history">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 8l0 4l2 2" />
+                        <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                    </svg>
+                    Historique
+                </button>
+                <button class="sideBar-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" />
+                        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    </svg>
+                    Setting
+                </button>
+            </div>
+    </aside>
+
+        <main>
+            <header class="main-header" style="background-color: #fff;">
+                <h2>Admin Dashboard</h2>
+
+                <div id="button-div">
+                    <button class="btn" onclick="goToChangePwdPage()">Change password</button>
+                    <button class="btn" onclick="disconnection()">Déconnexion</button>
+                    <a class="btn" href="/admin.html" style="display: none;">Admin Panel</a>
+                </div>
+            </header>
+            <div class="container">
+            <h2>Liste des utilisateurs</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Dernier pointage</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTable"></tbody>
+            </table>
+        </div>
+    </main>
+
+    </div>
+</body>
+<script src="js/admin.js"></script>
+<script src="js/utils.js"></script>
+</html>

@@ -1,0 +1,71 @@
+main{
+    display: flex;
+}
+
+#user-setting{
+    background-color: #3b82f6;
+    float: 1;
+    width: 20%;
+    min-height: 90vh;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#user-setting h1{
+    color: white;
+}
+#userCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+#userCard select{
+    margin-top: 20px;
+}
+section{
+    float: 2;
+    width: 80%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section h1{
+    margin: 20px;
+}
+
+/* TABLE */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    
+}
+
+thead {
+    background: #3b82f6;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th{
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tbody tr:hover {
+    background: #e5e7eb;
+}

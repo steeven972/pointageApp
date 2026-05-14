@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/pointingStyle.css">
+    <link rel="stylesheet" href="styles/components/headerStyle.css">
+    <link rel="stylesheet" href="styles/components/sideBarStyle.css">
+    <link rel="stylesheet" href="styles/utils.css">
+    <title>Biocoop pointage</title>
+</head>
+<body>
+    <div id="main-container">
+        <!---=====================================
+            SIDEBAR MENU
+        ==========================================-->
+        <aside>
+            <header>
+                <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+            </header>
+            <div id="sideBar-div">
+                <button id="reserve-button" class="sideBar-btn" onclick="goToAdminPanel()" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                    </svg>
+                    Dashboard
+                </button>
+                    <button class="sideBar-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                            <path d="M12 7v5l3 3" />
+                        </svg>
+                        Pointage
+                    </button>
+                    <button onclick="goToRapportPage()" class="sideBar-btn" href="./rapport.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chart-bar">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6" />
+                            <path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10" />
+                            <path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14" />
+                            <path d="M4 20h14" />
+                        </svg>
+                        Rapport
+                    </button>
+                    <button class="sideBar-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-history">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 8l0 4l2 2" />
+                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                        </svg>
+                        Historique
+                    </button>
+                    <button class="sideBar-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" />
+                            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        </svg>
+                        Setting
+                    </button>
+                </div>
+                <div id="user-account-btn">
+                    <div id="user-account-img">
+
+                    </div>
+                    <div id="user-info">
+                        <span>Steeven</span>
+                        <span>50959</span>
+                    </div>
+                    
+                </div>
+        </aside>
+
+        <!---==============================================
+            MAIN CONTENT COUNTER POINTING
+        ==================================================-->
+        <main>
+            <header class="main-header" style="background-color: #fff;">
+                <div id="username"></div>
+
+                <div id="button-div">
+                    <button class="btn" onclick="goToChangePwdPage()">Change password</button>
+                    <button class="btn" onclick="disconnection()">Déconnexion</button>
+                </div>
+            </header>
+            
+            
+            <section id="pointing-section">
+                <h1>Pointage</h1>
+
+                <hr>
+
+                <p>Pointez votre arrivée ou votre départ</p>
+                <div id="form-div">
+                    
+                    <form id="pointageForm">
+                        <div id="temp-form-div">
+                            <div>
+                                <svg id="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" />
+                                    <path d="M16 3v4" />
+                                    <path d="M8 3v4" />
+                                    <path d="M4 11h16" />
+                                    <path d="M11 15h1" />
+                                    <path d="M12 15v3" />
+                                </svg>
+                                <div id="days"></div>
+                                
+                            </div>
+                            <hr>
+                            <div>
+                                <svg id="clock-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                    <path d="M12 7v5l3 3" />
+                                </svg>
+                                <div id="timestamp"></div>
+                                <div>
+                                    <span style="font-size: 12px; margin-bottom: 10px;">Status actuel</span>
+                                    <div id="status">
+                                        <span id="status-span"></span></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div>
+                            <span id="info-status"></span>
+                            <button type="submit" class="btn" id="pointage-button">Commencer ma journée</button>
+                            <p>Cliquez pour pointer votre arrivée</p>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div id="info-temp-div" style="display: none;">
+                    <div class="info-card">
+                        <p class="titre">Dernier pointage</p>
+                        <p><span class="hour-info-span">08h:30</span></p>
+                        <p><span class="status">Entrée</span> | <span class="date-info-span">aujoud'hui</span></p>
+                    </div>
+                    <div class="info-card">
+                        <p class="titre">Temps travaillé</p>
+                        <p><span class="hour-info-span">05h02</span></p>
+                        <p><span class="date-info-span">aujour'hui</span></p>
+                    </div>
+                    <div class="info-card">
+                        <p class="titre">Total cette semaines</p>
+                        <p><span class="hour-info-span">27h30</span></p>
+                        <p><span class="date-info-span">Du 28 avr au 14 mai 2026</span></p>
+                    </div>
+                </div>
+            </section>
+            
+                
+            </main>
+        <script src="js/menuLoading.js"></script> 
+        <script src="js/timer.js"></script>
+        <script src="js/utils.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/utils.css">
+    <link rel="stylesheet" href="styles/user.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        <div id="username"></div>
+
+        <div>
+            <a href="/updateMDP.html">Change password</a>
+            <button id="btn-inverse" onclick="disconnection()">Déconnexion</button>
+            <a id="reserve-button" href="/admin.html" style="display: none;">Admin Panel</a>
+        </div>
+    </header>
+
+    <main>
+        <aside id="user-setting">
+            <h1>Fiche utilisateur</h1>
+
+            <div id="userCard"></div>
+
+            <button onclick="showPointage()">Voir historique</button>
+            <button onclick="showRoleOption()">Modifier Role</button>
+
+
+            <div id="updateRoleBlock" style="display: none;">
+                <select name="role" id="roleChoice">
+                    <option value="employé">Employé</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button onclick="confirmRoleUpdate()">Confirmer</button>
+            </div>
+        
+        </aside>
+        <section>
+            <h1>Suivie Pointage</h1>
+
+            <table id="pointage-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Entrée</th>
+                        <th>Sortie</th>
+                        <th>Durée</th>
+                    </tr>
+                </thead>
+                <tbody id="pointage-contenu">
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="js/user.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>

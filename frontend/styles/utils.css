@@ -1,0 +1,97 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: #0c4da2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #f0f0f0;
+}
+
+
+
+#button-div{
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn, #pointage-button{
+    background-color:  #0c4da2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 5px;
+    align-self: center;
+    font-weight: normal;
+}
+
+#btn:hover{
+    background-color: #083570;
+}
+
+#btn-inverse, a{
+    background-color: #fff;
+    color: #0c4da2;
+    border: 1px solid #0c4da2;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: center;
+    font-weight: normal;
+}
+
+a, button{
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#form-div{
+    min-width: 400px;
+    text-align: center;
+}
+
+aside{
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+#sideBar-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 10px;
+    gap: 8px;
+}
+
+.sideBar-btn{
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sideBar-btn:hover{
+    border-left: 5px solid #0d235f;
+    background-color: #0a40861a;
+}
+
+.sideBar-btn:active{
+    color: #fff;
+    background-color: #3a6297;
+}

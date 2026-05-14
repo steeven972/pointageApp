@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/components/headerStyle.css">
+    <link rel="stylesheet" href="styles/loginStyle.css">
+    <link rel="stylesheet" href="styles/utils.css">
+    <title>Biocoop LoginPage</title>
+</head>
+<body>
+    <header>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo">
+    </header>
+
+    <!---===========================================
+        Login Form for user connection
+    ===============================================-->
+    <main>
+        <div id="form-container">
+            <form id="login-form">
+                <h1>Login</h1>
+                <label>Username:</label>
+                <input type="text" id="username" class="input-data" required>
+
+                <label>Password:</label>
+                <input type="password" id="password" class="input-data" required>
+
+                <button type="submit" class="btn" style="margin-top: 15px;">Login</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+<script src="js/login.js"></script>
+</html>

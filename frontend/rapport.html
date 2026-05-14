@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/utils.css">
+    <link rel="stylesheet" href="styles/chartStyle.css">
+    <link rel="stylesheet" href="styles/components/headerStyle.css">
+    <link rel="stylesheet" href="styles/components/sideBarStyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="/images/Logo_Biocoop_site_40_ans_244x68px_V2.png" alt="biocoop logo" style="height: 40px; margin-left: 20px;">
+        <h1>Rapport</h1>
+        <div id="button-div">
+            <a href="pointage.html">Pointage</a>
+            <button id="btn-inverse" onclick="disconnection()">Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="chart-container">
+            <canvas id="hoursChart"></canvas>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
