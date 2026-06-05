@@ -18,7 +18,7 @@ fetch('/api/admin/users', {
                 <td>${user.id}</td>
                 <td>${user.username}</td>
                 <td>${user.status ? 'Présent' : 'Absent'}</td>
-                <td>${new Date(user.last_pointage).toLocaleDateString('fr-FR') || 'N/A'}</td>
+                <td>${user.last_pointage ? new Date(user.last_pointage).toString().slice(16, 24) : 'N/A'}</td>
                 <td>${user.role}</td>
                 <td>
                     <button onclick="view(${user.id})" class="btn">Voir</button>

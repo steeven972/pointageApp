@@ -1,0 +1,34 @@
+:root{
+    --text-color: #fff;
+    --btn-bg-color: #0c4da2;
+    --btn-bg-alterne-color : #0a3f86;
+
+
+}
+
+
+.btn{
+    background-color:  var(--btn-bg-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 5px;
+    align-self: center;
+    font-weight: normal;
+    transition: 0.2s ease;
+}
+
+.btn:hover{
+    background-color: var(--btn-bg-alterne-color);
+}
+
+
+.inverse, a{
+    background-color: var(--text-color);
+    color: var(--btn-bg-color);
+}
+
+.inverse:hover{
+    background-color: #e2e2e2;
+}

@@ -20,31 +20,8 @@ body{
     align-items: center;
 }
 
-.btn, #pointage-button{
-    background-color:  #0c4da2;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: 5px;
-    align-self: center;
-    font-weight: normal;
-}
 
-#btn:hover{
-    background-color: #083570;
-}
 
-#btn-inverse, a{
-    background-color: #fff;
-    color: #0c4da2;
-    border: 1px solid #0c4da2;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-    align-self: center;
-    font-weight: normal;
-}
 
 a, button{
     text-decoration: none;

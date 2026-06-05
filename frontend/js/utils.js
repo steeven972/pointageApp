@@ -9,6 +9,11 @@ function goToChangePwdPage(){
 function goToRapportPage(){
     window.location.href = "/rapport.html"
 }
+
+function goToPointagePage(){
+    window.location.href = "/pointage.html"
+}
+
 const passwordForm = document.getElementById('passwordForm');
 
 if(passwordForm){

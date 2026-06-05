@@ -93,16 +93,17 @@ function showPointage() {
 
             const row = `
                 <tr>
-                    <td>${new Date(p.date_jour).toLocaleDateString('fr-FR')}</td>
-                    <td>${p.entree || '-'}</td>
-                    <td>${p.sortie || '-'}</td>
+                    <td>${new Date(p.entree).toLocaleDateString('fr-FR')}</td>
+                    <td>${p.entree ? new Date(p.entree).toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris' }) : '-'}</td>
+                    <td>${p.sortie ? new Date(p.sortie).toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris' }) : '-'}</td>
                     <td>${p.duree ? p.duree + ' min' : '-'}</td>
                 </tr>
             `;
-
+            
             table.innerHTML += row;
 
         });
+        
 
     });
 

@@ -4,7 +4,7 @@ const db = require('../database/connection_sqlite').connection;
 function addPointage(userId, callback) {
 
     const now = new Date().toISOString();
-
+    console.log('Adding pointage for user:', userId, 'at', now);
     db.run(
         'INSERT INTO pointages (user_id, timestamp_in, timestamp_out) VALUES (?, ?, ?)',
         [userId, now, null],
@@ -99,9 +99,8 @@ function getPointageTime(userId, callback) {
     db.all(
         `
         SELECT 
-            DATE(timestamp_in) AS date_jour,
-            TIME(timestamp_in) AS entree,
-            TIME(timestamp_out) AS sortie,
+            timestamp_in AS entree,
+            timestamp_out AS sortie,
             total_minutes AS duree
         FROM pointages
         WHERE user_id = ?

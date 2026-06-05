@@ -20,4 +20,18 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     } else {
         alert(data.message);
     }
-});                                                                                                                                                                                                                                                                         
+});          
+
+
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleButton = document.getElementById('toggle-password');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.textContent = 'Hide';
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.textContent = 'Show';
+    }
+}
